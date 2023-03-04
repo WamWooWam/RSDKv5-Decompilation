@@ -11,7 +11,6 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
     RSDK::RenderDevice::hInstance     = hInstance;
     RSDK::RenderDevice::hPrevInstance = hPrevInstance;
     RSDK::RenderDevice::nShowCmd      = nShowCmd;
-
     return RSDK_main(1, &lpCmdLine, RSDK::LinkGameLogic);
 }
 #else

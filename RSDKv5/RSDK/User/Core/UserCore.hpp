@@ -190,7 +190,9 @@ void SaveSettingsINI(bool32 writeToFile);
 
 inline void WriteText(FileIO *file, const char *string, ...)
 {
-    // make the full string
+    if(!file) return;
+	
+	// make the full string
     char buffer[0x100];
     va_list args;
     va_start(args, string);

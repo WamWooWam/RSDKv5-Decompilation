@@ -314,6 +314,10 @@ void RenderDevice::Release(bool32 isRefresh)
         SDL_DestroyTexture(imageTexture);
     imageTexture = NULL;
 
+	if (!isRefresh) {
+		isRunning = false;
+	}
+	
     if (!isRefresh) {
         if (displayInfo.displays)
             free(displayInfo.displays);
@@ -1027,8 +1031,10 @@ void RenderDevice::ProcessEvent(SDL_Event event)
 
 bool RenderDevice::ProcessEvents()
 {
-    SDL_Event sdlEvent;
+	if (!isRunning)
+		return false;
 
+    SDL_Event sdlEvent{};
     while (SDL_PollEvent(&sdlEvent)) {
         ProcessEvent(sdlEvent);
 

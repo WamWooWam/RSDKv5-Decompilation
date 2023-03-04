@@ -28,7 +28,7 @@ int32 RSDK::RunRetroEngine(int32 argc, char *argv[])
 
     if (engine.consoleEnabled)
         InitConsole();
-    RenderDevice::isRunning = false;
+    RenderDevice::isRunning = false; 
 
     if (InitStorage()) {
         SKU::InitUserCore();
@@ -85,7 +85,8 @@ int32 RSDK::RunRetroEngine(int32 argc, char *argv[])
         RenderDevice::InitShaders();
         RenderDevice::SetWindowTitle();
 #else
-        if (RenderDevice::Init()) {
+			
+		if (RenderDevice::Init()) {
             RenderDevice::isRunning = true;
         }
         else {
@@ -1224,7 +1225,7 @@ void RSDK::InitGameLink()
 #if RETRO_PLATFORM == RETRO_WIN
             strcpy_s(buffer, 0x100, gameLogicName);
 #else
-        sprintf(buffer, "%s%s", SKU::userFileDir, gameLogicName);
+			sprintf(buffer, "%s%s", "@executable_path/../Resources/", gameLogicName);
 #endif
             if (!gameLogicHandle)
                 gameLogicHandle = Link::Open(buffer);

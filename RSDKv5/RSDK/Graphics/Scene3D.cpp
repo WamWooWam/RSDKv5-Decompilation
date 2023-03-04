@@ -173,25 +173,29 @@ void RSDK::SetIdentityMatrix(Matrix *matrix)
     matrix->values[2][3] = 0;
     matrix->values[3][3] = 0x100;
 }
-void RSDK::MatrixMultiply(Matrix *dest, Matrix *matrixA, Matrix *matrixB)
-{
-    int32 result[4][4];
-    memset(result, 0, 4 * 4 * sizeof(int32));
 
-    for (int32 i = 0; i < 0x10; ++i) {
-        uint32 rowA        = i / 4;
-        uint32 rowB        = i % 4;
-        result[rowB][rowA] = (matrixA->values[3][rowA] * matrixB->values[rowB][3] >> 8) + (matrixA->values[2][rowA] * matrixB->values[rowB][2] >> 8)
-                             + (matrixA->values[1][rowA] * matrixB->values[rowB][1] >> 8)
-                             + (matrixA->values[0][rowA] * matrixB->values[rowB][0] >> 8);
-    }
+void RSDK::MatrixMultiply(Matrix *dest, Matrix *matrixA, Matrix *matrixB) {
+	 int32 result[4][4];
+	 memset(result, 0, 4 * 4 * sizeof(int32));
+	 
+	 for (int32 i = 0; i < 0x10; ++i) {
+         uint32 rowA        = i / 4;
+         uint32 rowB        = i % 4;
+         result[rowB][rowA] =
+             (matrixA->values[3][rowA] * matrixB->values[rowB][3] >> 8) + 
+             (matrixA->values[2][rowA] * matrixB->values[rowB][2] >> 8) + 
+             (matrixA->values[1][rowA] * matrixB->values[rowB][1] >> 8) + 
+             (matrixA->values[0][rowA] * matrixB->values[rowB][0] >> 8);
+	 }
+	 
+	 for (int32 i = 0; i < 0x10; ++i) {
+         uint32 rowA              = i / 4;
+         uint32 rowB              = i % 4;
+         dest->values[rowB][rowA] = result[rowB][rowA];
+	 }	
 
-    for (int32 i = 0; i < 0x10; ++i) {
-        uint32 rowA              = i / 4;
-        uint32 rowB              = i % 4;
-        dest->values[rowB][rowA] = result[rowB][rowA];
-    }
 }
+
 void RSDK::MatrixTranslateXYZ(Matrix *matrix, int32 x, int32 y, int32 z, bool32 setIdentity)
 {
     if (setIdentity) {
@@ -216,21 +220,21 @@ void RSDK::MatrixTranslateXYZ(Matrix *matrix, int32 x, int32 y, int32 z, bool32 
 }
 void RSDK::MatrixScaleXYZ(Matrix *matrix, int32 scaleX, int32 scaleY, int32 scaleZ)
 {
-    matrix->values[0][0] = scaleX;
     matrix->values[1][0] = 0;
     matrix->values[2][0] = 0;
     matrix->values[3][0] = 0;
     matrix->values[0][1] = 0;
-    matrix->values[1][1] = scaleY;
     matrix->values[2][1] = 0;
     matrix->values[3][1] = 0;
     matrix->values[0][2] = 0;
     matrix->values[1][2] = 0;
-    matrix->values[2][2] = scaleZ;
     matrix->values[3][2] = 0;
     matrix->values[0][3] = 0;
     matrix->values[1][3] = 0;
     matrix->values[2][3] = 0;
+    matrix->values[0][0] = scaleX;
+    matrix->values[1][1] = scaleY;
+    matrix->values[2][2] = scaleZ;
     matrix->values[3][3] = 0x100;
 }
 void RSDK::MatrixRotateX(Matrix *matrix, int16 rotationX)

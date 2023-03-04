@@ -1,0 +1,431 @@
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Loaded file /Users/administrator/Library/Application Support/RSDKv5/Data.rsdk
+w: 424 h: 240 windowed: 1
+ERROR: Failed to open game logic file -> dlopen(Game.dylib, 5): image not found
+ERROR: Failed to link game logic!
+Loaded File Data/Game/GameConfig.bin
+Loaded File Data/SoundFX/Global/Jump.wav
+Loaded File Data/SoundFX/Global/Ring.wav
+Loaded File Data/SoundFX/Global/StarPost.wav
+Loaded File Data/SoundFX/Global/LoseRings.wav
+Loaded File Data/SoundFX/Global/Spring.wav
+Loaded File Data/SoundFX/Global/Destroy.wav
+Loaded File Data/SoundFX/Global/BlueShield.wav
+Loaded File Data/SoundFX/Global/BubbleShield.wav
+Loaded File Data/SoundFX/Global/FireShield.wav
+Loaded File Data/SoundFX/Global/LightningShield.wav
+Loaded File Data/SoundFX/Global/Skidding.wav
+Loaded File Data/SoundFX/Global/Charge.wav
+Loaded File Data/SoundFX/Global/Release.wav
+Loaded File Data/SoundFX/Global/DropDash.wav
+Loaded File Data/SoundFX/Global/Hurt.wav
+Loaded File Data/SoundFX/Global/Roll.wav
+Loaded File Data/SoundFX/Global/SignPost.wav
+Loaded File Data/SoundFX/Global/SignPost2p.wav
+Loaded File Data/SoundFX/Global/InstaShield.wav
+Loaded File Data/SoundFX/Global/FireDash.wav
+Loaded File Data/SoundFX/Global/BubbleBounce.wav
+Loaded File Data/SoundFX/Global/LightningJump.wav
+Loaded File Data/SoundFX/Global/SpikesMove.wav
+Loaded File Data/SoundFX/Global/Slide.wav
+Loaded File Data/SoundFX/Global/Twinkle.wav
+Loaded File Data/SoundFX/Global/ScoreAdd.wav
+Loaded File Data/SoundFX/Global/ScoreTotal.wav
+Loaded File Data/SoundFX/Global/MenuBleep.wav
+Loaded File Data/SoundFX/Global/MenuAccept.wav
+Loaded File Data/SoundFX/Global/OuttaHere.wav
+Loaded File Data/SoundFX/Global/Grab.wav
+Loaded File Data/SoundFX/Global/Flying.wav
+Loaded File Data/SoundFX/Global/Tired.wav
+Loaded File Data/SoundFX/Global/Land.wav
+Loaded File Data/SoundFX/Global/SpecialRing.wav
+Loaded File Data/SoundFX/Global/SpecialWarp.wav
+Loaded File Data/SoundFX/Global/Teleport.wav
+Loaded File Data/SoundFX/Global/PeelCharge.wav
+Loaded File Data/SoundFX/Global/PeelRelease.wav
+Loaded File Data/SoundFX/Global/HyperRing.wav
+Loaded File Data/SoundFX/Stage/Transform2.wav
+Loaded File Data/SoundFX/Global/MenuWoosh.wav
+Loaded File Data/SoundFX/VO/Three.wav
+Loaded File Data/SoundFX/VO/Two.wav
+Loaded File Data/SoundFX/VO/One.wav
+Loaded File Data/SoundFX/VO/Go.wav
+Loaded File Data/SoundFX/VO/Goal.wav
+Loaded File Data/SoundFX/VO/SonicWins.wav
+Loaded File Data/SoundFX/VO/TailsWins.wav
+Loaded File Data/SoundFX/VO/KnuxWins.wav
+Loaded File Data/SoundFX/Global/Push.wav
+Loaded File Data/SoundFX/Stage/Fail.wav
+Loaded File Data/SoundFX/Stage/PimPom.wav
+Loaded File Data/SoundFX/Global/Spike.wav
+Loaded File Data/SoundFX/Stage/Click.wav
+Loaded File Data/SoundFX/VO/NewRecordTop.wav
+Loaded File Data/SoundFX/VO/NewRecordMid.wav
+Loaded File Data/SoundFX/Special/Event.wav
+Loaded File Data/SoundFX/Global/Swap.wav
+Loaded File Data/SoundFX/Stage/PowerDown.wav
+Loaded File Data/SoundFX/Global/SwapFail.wav
+Loaded File Data/SoundFX/Global/MightyDeflect.wav
+Loaded File Data/SoundFX/Global/MightyDrill.wav
+Loaded File Data/SoundFX/Global/MightyLand.wav
+Loaded File Data/SoundFX/Global/MightyUnspin.wav
+Loaded File Data/SoundFX/Global/RaySwoop.wav
+Loaded File Data/SoundFX/Global/RayDive.wav
+Loaded File Data/SoundFX/Global/Recovery.wav
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+File not found: /Users/administrator/Library/Application Support/RSDKv5/Data.rsdk
+w: 424 h: 240 windowed: 1
+ERROR: Failed to open game logic file -> dlopen(Game.dylib, 5): image not found
+ERROR: Failed to link game logic!
+File not found: Data/Game/GameConfig.bin
+Attempting to save user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Loaded file /Users/administrator/Library/Application Support/RSDKv5/Data.rsdk
+ERROR: Failed to open game logic file -> dlopen(Game.dylib, 5): image not found
+ERROR: Failed to link game logic!
+Loaded File Data/Game/GameConfig.bin
+Loaded File Data/SoundFX/Global/Jump.wav
+Loaded File Data/SoundFX/Global/Ring.wav
+Loaded File Data/SoundFX/Global/StarPost.wav
+Loaded File Data/SoundFX/Global/LoseRings.wav
+Loaded File Data/SoundFX/Global/Spring.wav
+Loaded File Data/SoundFX/Global/Destroy.wav
+Loaded File Data/SoundFX/Global/BlueShield.wav
+Loaded File Data/SoundFX/Global/BubbleShield.wav
+Loaded File Data/SoundFX/Global/FireShield.wav
+Loaded File Data/SoundFX/Global/LightningShield.wav
+Loaded File Data/SoundFX/Global/Skidding.wav
+Loaded File Data/SoundFX/Global/Charge.wav
+Loaded File Data/SoundFX/Global/Release.wav
+Loaded File Data/SoundFX/Global/DropDash.wav
+Loaded File Data/SoundFX/Global/Hurt.wav
+Loaded File Data/SoundFX/Global/Roll.wav
+Loaded File Data/SoundFX/Global/SignPost.wav
+Loaded File Data/SoundFX/Global/SignPost2p.wav
+Loaded File Data/SoundFX/Global/InstaShield.wav
+Loaded File Data/SoundFX/Global/FireDash.wav
+Loaded File Data/SoundFX/Global/BubbleBounce.wav
+Loaded File Data/SoundFX/Global/LightningJump.wav
+Loaded File Data/SoundFX/Global/SpikesMove.wav
+Loaded File Data/SoundFX/Global/Slide.wav
+Loaded File Data/SoundFX/Global/Twinkle.wav
+Loaded File Data/SoundFX/Global/ScoreAdd.wav
+Loaded File Data/SoundFX/Global/ScoreTotal.wav
+Loaded File Data/SoundFX/Global/MenuBleep.wav
+Loaded File Data/SoundFX/Global/MenuAccept.wav
+Loaded File Data/SoundFX/Global/OuttaHere.wav
+Loaded File Data/SoundFX/Global/Grab.wav
+Loaded File Data/SoundFX/Global/Flying.wav
+Loaded File Data/SoundFX/Global/Tired.wav
+Loaded File Data/SoundFX/Global/Land.wav
+Loaded File Data/SoundFX/Global/SpecialRing.wav
+Loaded File Data/SoundFX/Global/SpecialWarp.wav
+Loaded File Data/SoundFX/Global/Teleport.wav
+Loaded File Data/SoundFX/Global/PeelCharge.wav
+Loaded File Data/SoundFX/Global/PeelRelease.wav
+Loaded File Data/SoundFX/Global/HyperRing.wav
+Loaded File Data/SoundFX/Stage/Transform2.wav
+Loaded File Data/SoundFX/Global/MenuWoosh.wav
+Loaded File Data/SoundFX/VO/Three.wav
+Loaded File Data/SoundFX/VO/Two.wav
+Loaded File Data/SoundFX/VO/One.wav
+Loaded File Data/SoundFX/VO/Go.wav
+Loaded File Data/SoundFX/VO/Goal.wav
+Loaded File Data/SoundFX/VO/SonicWins.wav
+Loaded File Data/SoundFX/VO/TailsWins.wav
+Loaded File Data/SoundFX/VO/KnuxWins.wav
+Loaded File Data/SoundFX/Global/Push.wav
+Loaded File Data/SoundFX/Stage/Fail.wav
+Loaded File Data/SoundFX/Stage/PimPom.wav
+Loaded File Data/SoundFX/Global/Spike.wav
+Loaded File Data/SoundFX/Stage/Click.wav
+Loaded File Data/SoundFX/VO/NewRecordTop.wav
+Loaded File Data/SoundFX/VO/NewRecordMid.wav
+Loaded File Data/SoundFX/Special/Event.wav
+Loaded File Data/SoundFX/Global/Swap.wav
+Loaded File Data/SoundFX/Stage/PowerDown.wav
+Loaded File Data/SoundFX/Global/SwapFail.wav
+Loaded File Data/SoundFX/Global/MightyDeflect.wav
+Loaded File Data/SoundFX/Global/MightyDrill.wav
+Loaded File Data/SoundFX/Global/MightyLand.wav
+Loaded File Data/SoundFX/Global/MightyUnspin.wav
+Loaded File Data/SoundFX/Global/RaySwoop.wav
+Loaded File Data/SoundFX/Global/RayDive.wav
+Loaded File Data/SoundFX/Global/Recovery.wav
+w: 424 h: 240 windowed: 1
+Loading Scene "Presentation - Logos" with filter 255
+Loaded File Data/Stages/Logos/TileConfig.bin
+Loaded File Data/Stages/Logos/StageConfig.bin
+Data File not found: Data/Objects/Static/E381DC058108A5ACA91DF2583566136D.bin
+Data File not found: Data/Objects/Static/09315626295D9940C6BF49DF7FD1664C.bin
+Loaded File Data/SoundFX/Stage/Sega.wav
+Loaded File Data/Stages/Logos/16x16Tiles.gif
+Loaded File Data/Stages/Logos/Scene1.bin
+Object Class 2 is unimplemented!
+Attempting to save user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+File not found: /Users/administrator/Projects/RSDKv5-Decompilation/bin/macOS/Data.rsdk
+ERROR: Failed to open game logic file -> dlopen(Game.dylib, 5): image not found
+ERROR: Failed to link game logic!
+File not found: Data/Game/GameConfig.bin
+w: 424 h: 240 windowed: 1
+Attempting to save user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+File not found: /Users/administrator/Projects/RSDKv5-Decompilation/bin/macOS/Data.rsdk
+ERROR: Failed to open game logic file -> dlopen(Game.dylib, 5): image not found
+ERROR: Failed to link game logic!
+File not found: Data/Game/GameConfig.bin
+w: 424 h: 240 windowed: 1
+Attempting to save user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Loaded file /Users/administrator/Projects/RSDKv5-Decompilation/bin/macOS/Data.rsdk
+Data File not found: Data/Objects/Static/420701D3A57A564031790EE4228C7BDE.bin
+Data File not found: Data/Objects/Static/AD8ECA1EB8CDCB6CEAA5CE2E361EF48E.bin
+Data File not found: Data/Objects/Static/38021520621EDBEBB1E1B2FE4423535F.bin
+Data File not found: Data/Objects/Static/B5238FBBD2653E8506337C21FACF1A88.bin
+Loaded File Data/Game/GameConfig.bin
+Loaded File Data/SoundFX/Global/Jump.wav
+Loaded File Data/SoundFX/Global/Ring.wav
+Loaded File Data/SoundFX/Global/StarPost.wav
+Loaded File Data/SoundFX/Global/LoseRings.wav
+Loaded File Data/SoundFX/Global/Spring.wav
+Loaded File Data/SoundFX/Global/Destroy.wav
+Loaded File Data/SoundFX/Global/BlueShield.wav
+Loaded File Data/SoundFX/Global/BubbleShield.wav
+Loaded File Data/SoundFX/Global/FireShield.wav
+Loaded File Data/SoundFX/Global/LightningShield.wav
+Loaded File Data/SoundFX/Global/Skidding.wav
+Loaded File Data/SoundFX/Global/Charge.wav
+Loaded File Data/SoundFX/Global/Release.wav
+Loaded File Data/SoundFX/Global/DropDash.wav
+Loaded File Data/SoundFX/Global/Hurt.wav
+Loaded File Data/SoundFX/Global/Roll.wav
+Loaded File Data/SoundFX/Global/SignPost.wav
+Loaded File Data/SoundFX/Global/SignPost2p.wav
+Loaded File Data/SoundFX/Global/InstaShield.wav
+Loaded File Data/SoundFX/Global/FireDash.wav
+Loaded File Data/SoundFX/Global/BubbleBounce.wav
+Loaded File Data/SoundFX/Global/LightningJump.wav
+Loaded File Data/SoundFX/Global/SpikesMove.wav
+Loaded File Data/SoundFX/Global/Slide.wav
+Loaded File Data/SoundFX/Global/Twinkle.wav
+Loaded File Data/SoundFX/Global/ScoreAdd.wav
+Loaded File Data/SoundFX/Global/ScoreTotal.wav
+Loaded File Data/SoundFX/Global/MenuBleep.wav
+Loaded File Data/SoundFX/Global/MenuAccept.wav
+Loaded File Data/SoundFX/Global/OuttaHere.wav
+Loaded File Data/SoundFX/Global/Grab.wav
+Loaded File Data/SoundFX/Global/Flying.wav
+Loaded File Data/SoundFX/Global/Tired.wav
+Loaded File Data/SoundFX/Global/Land.wav
+Loaded File Data/SoundFX/Global/SpecialRing.wav
+Loaded File Data/SoundFX/Global/SpecialWarp.wav
+Loaded File Data/SoundFX/Global/Teleport.wav
+Loaded File Data/SoundFX/Global/PeelCharge.wav
+Loaded File Data/SoundFX/Global/PeelRelease.wav
+Loaded File Data/SoundFX/Global/HyperRing.wav
+Loaded File Data/SoundFX/Stage/Transform2.wav
+Loaded File Data/SoundFX/Global/MenuWoosh.wav
+Loaded File Data/SoundFX/VO/Three.wav
+Loaded File Data/SoundFX/VO/Two.wav
+Loaded File Data/SoundFX/VO/One.wav
+Loaded File Data/SoundFX/VO/Go.wav
+Loaded File Data/SoundFX/VO/Goal.wav
+Loaded File Data/SoundFX/VO/SonicWins.wav
+Loaded File Data/SoundFX/VO/TailsWins.wav
+Loaded File Data/SoundFX/VO/KnuxWins.wav
+Loaded File Data/SoundFX/Global/Push.wav
+Loaded File Data/SoundFX/Stage/Fail.wav
+Loaded File Data/SoundFX/Stage/PimPom.wav
+Loaded File Data/SoundFX/Global/Spike.wav
+Loaded File Data/SoundFX/Stage/Click.wav
+Loaded File Data/SoundFX/VO/NewRecordTop.wav
+Loaded File Data/SoundFX/VO/NewRecordMid.wav
+Loaded File Data/SoundFX/Special/Event.wav
+Loaded File Data/SoundFX/Global/Swap.wav
+Loaded File Data/SoundFX/Stage/PowerDown.wav
+Loaded File Data/SoundFX/Global/SwapFail.wav
+Loaded File Data/SoundFX/Global/MightyDeflect.wav
+Loaded File Data/SoundFX/Global/MightyDrill.wav
+Loaded File Data/SoundFX/Global/MightyLand.wav
+Loaded File Data/SoundFX/Global/MightyUnspin.wav
+Loaded File Data/SoundFX/Global/RaySwoop.wav
+Loaded File Data/SoundFX/Global/RayDive.wav
+Loaded File Data/SoundFX/Global/Recovery.wav
+w: 424 h: 240 windowed: 1
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Nope!
+Loaded file /Users/administrator/Projects/RSDKv5-Decompilation/bin/macOS/Data.rsdk
+ERROR: Failed to open game logic file -> dlopen(Game.dylib, 5): image not found
+ERROR: Failed to link game logic!
+Loaded File Data/Game/GameConfig.bin
+Loaded File Data/SoundFX/Global/Jump.wav
+Loaded File Data/SoundFX/Global/Ring.wav
+Loaded File Data/SoundFX/Global/StarPost.wav
+Loaded File Data/SoundFX/Global/LoseRings.wav
+Loaded File Data/SoundFX/Global/Spring.wav
+Loaded File Data/SoundFX/Global/Destroy.wav
+Loaded File Data/SoundFX/Global/BlueShield.wav
+Loaded File Data/SoundFX/Global/BubbleShield.wav
+Loaded File Data/SoundFX/Global/FireShield.wav
+Loaded File Data/SoundFX/Global/LightningShield.wav
+Loaded File Data/SoundFX/Global/Skidding.wav
+Loaded File Data/SoundFX/Global/Charge.wav
+Loaded File Data/SoundFX/Global/Release.wav
+Loaded File Data/SoundFX/Global/DropDash.wav
+Loaded File Data/SoundFX/Global/Hurt.wav
+Loaded File Data/SoundFX/Global/Roll.wav
+Loaded File Data/SoundFX/Global/SignPost.wav
+Loaded File Data/SoundFX/Global/SignPost2p.wav
+Loaded File Data/SoundFX/Global/InstaShield.wav
+Loaded File Data/SoundFX/Global/FireDash.wav
+Loaded File Data/SoundFX/Global/BubbleBounce.wav
+Loaded File Data/SoundFX/Global/LightningJump.wav
+Loaded File Data/SoundFX/Global/SpikesMove.wav
+Loaded File Data/SoundFX/Global/Slide.wav
+Loaded File Data/SoundFX/Global/Twinkle.wav
+Loaded File Data/SoundFX/Global/ScoreAdd.wav
+Loaded File Data/SoundFX/Global/ScoreTotal.wav
+Loaded File Data/SoundFX/Global/MenuBleep.wav
+Loaded File Data/SoundFX/Global/MenuAccept.wav
+Loaded File Data/SoundFX/Global/OuttaHere.wav
+Loaded File Data/SoundFX/Global/Grab.wav
+Loaded File Data/SoundFX/Global/Flying.wav
+Loaded File Data/SoundFX/Global/Tired.wav
+Loaded File Data/SoundFX/Global/Land.wav
+Loaded File Data/SoundFX/Global/SpecialRing.wav
+Loaded File Data/SoundFX/Global/SpecialWarp.wav
+Loaded File Data/SoundFX/Global/Teleport.wav
+Loaded File Data/SoundFX/Global/PeelCharge.wav
+Loaded File Data/SoundFX/Global/PeelRelease.wav
+Loaded File Data/SoundFX/Global/HyperRing.wav
+Loaded File Data/SoundFX/Stage/Transform2.wav
+Loaded File Data/SoundFX/Global/MenuWoosh.wav
+Loaded File Data/SoundFX/VO/Three.wav
+Loaded File Data/SoundFX/VO/Two.wav
+Loaded File Data/SoundFX/VO/One.wav
+Loaded File Data/SoundFX/VO/Go.wav
+Loaded File Data/SoundFX/VO/Goal.wav
+Loaded File Data/SoundFX/VO/SonicWins.wav
+Loaded File Data/SoundFX/VO/TailsWins.wav
+Loaded File Data/SoundFX/VO/KnuxWins.wav
+Loaded File Data/SoundFX/Global/Push.wav
+Loaded File Data/SoundFX/Stage/Fail.wav
+Loaded File Data/SoundFX/Stage/PimPom.wav
+Loaded File Data/SoundFX/Global/Spike.wav
+Loaded File Data/SoundFX/Stage/Click.wav
+Loaded File Data/SoundFX/VO/NewRecordTop.wav
+Loaded File Data/SoundFX/VO/NewRecordMid.wav
+Loaded File Data/SoundFX/Special/Event.wav
+Loaded File Data/SoundFX/Global/Swap.wav
+Loaded File Data/SoundFX/Stage/PowerDown.wav
+Loaded File Data/SoundFX/Global/SwapFail.wav
+Loaded File Data/SoundFX/Global/MightyDeflect.wav
+Loaded File Data/SoundFX/Global/MightyDrill.wav
+Loaded File Data/SoundFX/Global/MightyLand.wav
+Loaded File Data/SoundFX/Global/MightyUnspin.wav
+Loaded File Data/SoundFX/Global/RaySwoop.wav
+Loaded File Data/SoundFX/Global/RayDive.wav
+Loaded File Data/SoundFX/Global/Recovery.wav
+w: 424 h: 240 windowed: 1
+Attempting to load user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin
+Loaded file /Volumes/Server SSD/Users/administrator/Projects/RSDKv5-Decompilation/bin/macOS/Data.rsdk
+Data File not found: Data/Objects/Static/420701D3A57A564031790EE4228C7BDE.bin
+Data File not found: Data/Objects/Static/AD8ECA1EB8CDCB6CEAA5CE2E361EF48E.bin
+Data File not found: Data/Objects/Static/38021520621EDBEBB1E1B2FE4423535F.bin
+Data File not found: Data/Objects/Static/B5238FBBD2653E8506337C21FACF1A88.bin
+Loaded File Data/Game/GameConfig.bin
+Loaded File Data/SoundFX/Global/Jump.wav
+Loaded File Data/SoundFX/Global/Ring.wav
+Loaded File Data/SoundFX/Global/StarPost.wav
+Loaded File Data/SoundFX/Global/LoseRings.wav
+Loaded File Data/SoundFX/Global/Spring.wav
+Loaded File Data/SoundFX/Global/Destroy.wav
+Loaded File Data/SoundFX/Global/BlueShield.wav
+Loaded File Data/SoundFX/Global/BubbleShield.wav
+Loaded File Data/SoundFX/Global/FireShield.wav
+Loaded File Data/SoundFX/Global/LightningShield.wav
+Loaded File Data/SoundFX/Global/Skidding.wav
+Loaded File Data/SoundFX/Global/Charge.wav
+Loaded File Data/SoundFX/Global/Release.wav
+Loaded File Data/SoundFX/Global/DropDash.wav
+Loaded File Data/SoundFX/Global/Hurt.wav
+Loaded File Data/SoundFX/Global/Roll.wav
+Loaded File Data/SoundFX/Global/SignPost.wav
+Loaded File Data/SoundFX/Global/SignPost2p.wav
+Loaded File Data/SoundFX/Global/InstaShield.wav
+Loaded File Data/SoundFX/Global/FireDash.wav
+Loaded File Data/SoundFX/Global/BubbleBounce.wav
+Loaded File Data/SoundFX/Global/LightningJump.wav
+Loaded File Data/SoundFX/Global/SpikesMove.wav
+Loaded File Data/SoundFX/Global/Slide.wav
+Loaded File Data/SoundFX/Global/Twinkle.wav
+Loaded File Data/SoundFX/Global/ScoreAdd.wav
+Loaded File Data/SoundFX/Global/ScoreTotal.wav
+Loaded File Data/SoundFX/Global/MenuBleep.wav
+Loaded File Data/SoundFX/Global/MenuAccept.wav
+Loaded File Data/SoundFX/Global/OuttaHere.wav
+Loaded File Data/SoundFX/Global/Grab.wav
+Loaded File Data/SoundFX/Global/Flying.wav
+Loaded File Data/SoundFX/Global/Tired.wav
+Loaded File Data/SoundFX/Global/Land.wav
+Loaded File Data/SoundFX/Global/SpecialRing.wav
+Loaded File Data/SoundFX/Global/SpecialWarp.wav
+Loaded File Data/SoundFX/Global/Teleport.wav
+Loaded File Data/SoundFX/Global/PeelCharge.wav
+Loaded File Data/SoundFX/Global/PeelRelease.wav
+Loaded File Data/SoundFX/Global/HyperRing.wav
+Loaded File Data/SoundFX/Stage/Transform2.wav
+Loaded File Data/SoundFX/Global/MenuWoosh.wav
+Loaded File Data/SoundFX/VO/Three.wav
+Loaded File Data/SoundFX/VO/Two.wav
+Loaded File Data/SoundFX/VO/One.wav
+Loaded File Data/SoundFX/VO/Go.wav
+Loaded File Data/SoundFX/VO/Goal.wav
+Loaded File Data/SoundFX/VO/SonicWins.wav
+Loaded File Data/SoundFX/VO/TailsWins.wav
+Loaded File Data/SoundFX/VO/KnuxWins.wav
+Loaded File Data/SoundFX/Global/Push.wav
+Loaded File Data/SoundFX/Stage/Fail.wav
+Loaded File Data/SoundFX/Stage/PimPom.wav
+Loaded File Data/SoundFX/Global/Spike.wav
+Loaded File Data/SoundFX/Stage/Click.wav
+Loaded File Data/SoundFX/VO/NewRecordTop.wav
+Loaded File Data/SoundFX/VO/NewRecordMid.wav
+Loaded File Data/SoundFX/Special/Event.wav
+Loaded File Data/SoundFX/Global/Swap.wav
+Loaded File Data/SoundFX/Stage/PowerDown.wav
+Loaded File Data/SoundFX/Global/SwapFail.wav
+Loaded File Data/SoundFX/Global/MightyDeflect.wav
+Loaded File Data/SoundFX/Global/MightyDrill.wav
+Loaded File Data/SoundFX/Global/MightyLand.wav
+Loaded File Data/SoundFX/Global/MightyUnspin.wav
+Loaded File Data/SoundFX/Global/RaySwoop.wav
+Loaded File Data/SoundFX/Global/RayDive.wav
+Loaded File Data/SoundFX/Global/Recovery.wav
+w: 848 h: 480 windowed: 1
+Loading Scene "Presentation - Logos" with filter 255
+Loaded File Data/Stages/Logos/TileConfig.bin
+Loaded File Data/Stages/Logos/StageConfig.bin
+Data File not found: Data/Objects/Static/E381DC058108A5ACA91DF2583566136D.bin
+Data File not found: Data/Objects/Static/09315626295D9940C6BF49DF7FD1664C.bin
+Data File not found: Data/Objects/Static/870F0B5491E4D7EE7EA03F7F7A3D93CC.bin
+Data File not found: Data/Objects/Static/C626F7AC50103D2F03D73ADC4EA5EC0B.bin
+Loaded File Data/SoundFX/Stage/Sega.wav
+Loaded File Data/Stages/Logos/16x16Tiles.gif
+Loaded File Data/Stages/Logos/Scene1.bin
+Loaded File Data/Sprites/Logos/Logos.bin
+Loaded File Data/Sprites/Logos/Logos.gif
+Attempting to save user file: /Users/administrator/Library/Application Support/RSDKv5/Achievements.bin

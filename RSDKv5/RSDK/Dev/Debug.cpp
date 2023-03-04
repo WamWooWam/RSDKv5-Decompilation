@@ -103,11 +103,13 @@ void RSDK::PrintLog(int32 mode, const char *message, ...)
         }
 
 #if !RETRO_USE_ORIGINAL_CODE && RETRO_PLATFORM != RETRO_ANDROID
-        FileIO *file = fOpen(BASE_PATH "log.txt", "a");
-        if (file) {
-            fWrite(&outputString, 1, strlen(outputString), file);
-            fClose(file);
-        }
+		/* FileIO *file = fOpen(BASE_PATH "log.txt", "a");
+		if (file) {
+			fWrite(&outputString, 1, strlen(outputString), file);
+			fClose(file);
+		} */
+		
+		printf("%s", outputString); 
 #endif
     }
 #endif

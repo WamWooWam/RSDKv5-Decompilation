@@ -9,7 +9,7 @@ struct DummyCore : UserCore {
         values[0]  = false;
         valueCount = 1;
 
-#ifndef RSDK_AUTOBUILD
+#if 1
         // disable plus on autobuilds
         for (int32 v = 0; v < valueCount; ++v) values[v] = true;
 #endif

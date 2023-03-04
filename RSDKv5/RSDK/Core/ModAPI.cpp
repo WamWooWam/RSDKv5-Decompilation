@@ -6,13 +6,13 @@
 #include "Legacy/ModAPILegacy.cpp"
 #endif
 
-#include <filesystem>
+#include <experimental/filesystem>
 #include <sstream>
 #include <stdexcept>
 #include <functional>
 
 #if RETRO_PLATFORM != RETRO_ANDROID
-namespace fs = std::filesystem;
+namespace fs = std::experimental::filesystem;
 #else
 bool fs::exists(fs::path path)
 {
@@ -380,7 +380,7 @@ bool32 RSDK::ScanModFolder(ModInfo *info, const char *targetFile, bool32 fromLoa
 
             for (auto dirFile : dirIterator) {
 #if RETRO_PLATFORM != RETRO_ANDROID
-                if (!dirFile.is_directory()) {
+                if (!fs::is_directory(dirFile)) {
 #endif
                     files.push_back(dirFile);
 
@@ -536,7 +536,7 @@ void RSDK::LoadMods(bool newOnly, bool32 getVersion)
         try {
             auto rdi = fs::directory_iterator(modPath);
             for (auto de : rdi) {
-                if (de.is_directory()) {
+                if (fs::is_directory(de)) {
                     fs::path modDirPath = de.path();
 
                     ModInfo info = {};

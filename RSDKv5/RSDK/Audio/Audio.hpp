@@ -24,16 +24,16 @@ struct SFXInfo {
 
 struct ChannelInfo {
     float *samplePtr;
-    float pan;
-    float volume;
-    int32 speed;
-    size_t sampleLength;
-    int32 bufferPos;
-    int32 playIndex;
-    uint32 loop;
-    int16 soundID;
-    uint8 priority;
-    uint8 state;
+    volatile float pan;
+    volatile float volume;
+    volatile int32 speed;
+    volatile size_t sampleLength;
+    volatile int32 bufferPos;
+    volatile int32 playIndex;
+    volatile uint32 loop;
+    volatile int16 soundID;
+    volatile uint8 priority;
+    volatile uint8 state;
 };
 
 enum ChannelStates { CHANNEL_IDLE, CHANNEL_SFX, CHANNEL_STREAM, CHANNEL_LOADING_STREAM, CHANNEL_PAUSED = 0x40 };

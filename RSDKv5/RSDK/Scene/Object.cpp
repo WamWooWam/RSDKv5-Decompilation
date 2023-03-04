@@ -157,8 +157,9 @@ void RSDK::LoadStaticVariables(uint8 *classPtr, uint32 *hash, int32 readOffset)
                     case SVAR_UINT8:
                     case SVAR_INT8:
                         if (info.readPos + (count * sizeof(uint8)) <= info.fileSize && &classPtr[dataPos]) {
-                            for (int32 i = 0; i < count * sizeof(uint8); i += sizeof(uint8)) ReadBytes(&info, &classPtr[dataPos + i], sizeof(uint8));
-                        }
+                            //for (int32 i = 0; i < count * sizeof(uint8); i += sizeof(uint8)) ReadBytes(&info, &classPtr[dataPos + i], sizeof(uint8));
+							ReadBytes(&info, &classPtr[dataPos], count*sizeof(uint8));
+						}
                         else {
                             info.readPos += count * sizeof(uint8);
                         }

@@ -4,7 +4,7 @@
 #include "Legacy/DrawingLegacy.cpp"
 #endif
 
-using namespace RSDK;
+using namespace RSDK ;
 
 // all render devices need to access the initial vertex buffer :skull:
 

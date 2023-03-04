@@ -3,14 +3,14 @@
 PKGCONFIG	=  pkg-config
 STRIP		?= strip
 
-STATIC		?= 1
-DEBUG		?= 1
+STATIC		?= 0
+DEBUG		?= 0
 VERBOSE		?= 0
 PROFILE		?= 0
 
-RSDK_ONLY   ?= 0
+RSDK_ONLY   ?= 1
 
-RETRO_REVISION ?= 3
+RETRO_REVISION ?= 2
 RSDK_REVISION  ?= $(RETRO_REVISION)
 
 ifeq ($(RSDK_REVISION),3)
@@ -21,8 +21,8 @@ endif
 RSDK_SUFFIX  = 
 USERTYPE    ?= Dummy
 
-RSDK_CFLAGS  =
-RSDK_LDFLAGS =
+RSDK_CFLAGS  = $(shell pkg-config --cflags SDL2 ogg vorbis theora) -arch i386 -arch x86_64
+RSDK_LDFLAGS = ./dependencies/mac/cocoaHelpers.o -lobjc -Wl,-framework,Foundation $(shell pkg-config --libs SDL2 ogg vorbis theora) -arch i386
 RSDK_LIBS    =
 
 RSDK_PREBUILD =
@@ -36,7 +36,7 @@ GAME_SUFFIX ?= .so
 GAME_ALLC   ?= 1
 
 GAME_CFLAGS  =
-GAME_LDFLAGS = -shared
+GAME_LDFLAGS = 
 GAME_LIBS    =
 
 GAME_PREBUILD =
@@ -92,12 +92,12 @@ CFLAGS ?= $(CXXFLAGS)
 DEFINES += -DBASE_PATH='"$(BASE_PATH)"'
 
 ifeq ($(DEBUG),1)
-	CXXFLAGS += -g
-	CFLAGS += -g
+	CXXFLAGS += -g -O2
+	CFLAGS += -g -O2
 	STRIP = :
 else
-	CXXFLAGS += -O3
-	CFLAGS += -O3
+	CXXFLAGS += -O3 
+	CFLAGS += -O3 
 endif
 
 ifeq ($(STATIC),1)
@@ -141,11 +141,13 @@ RSDK_INCLUDES  += \
 	-I./RSDKv5/ 					\
 	-I./dependencies/all/ 			\
 	-I./dependencies/all/tinyxml2/ 	\
-	-I./dependencies/all/iniparser/
+	-I./dependencies/all/iniparser/ \
+	-I./dependencies/mac \
+	-I../leopard_sdl2.0.6/include
 
 # Main Sources
 RSDK_SOURCES += \
-	RSDKv5/main 							\
+	RSDKv5/main 					\
 	RSDKv5/RSDK/Core/RetroEngine  			\
 	RSDKv5/RSDK/Core/Math         			\
 	RSDKv5/RSDK/Core/Reader       			\
@@ -165,18 +167,18 @@ RSDK_SOURCES += \
 	RSDKv5/RSDK/Scene/Scene        			\
 	RSDKv5/RSDK/Scene/Collision    			\
 	RSDKv5/RSDK/Scene/Object       			\
-	RSDKv5/RSDK/Scene/Objects/DefaultObject \
-	RSDKv5/RSDK/Scene/Objects/DevOutput     \
-	RSDKv5/RSDK/User/Core/UserAchievements  \
+	RSDKv5/RSDK/Scene/Objects/DefaultObject 	\
+	RSDKv5/RSDK/Scene/Objects/DevOutput     	\
+	RSDKv5/RSDK/User/Core/UserAchievements  	\
 	RSDKv5/RSDK/User/Core/UserCore     		\
-	RSDKv5/RSDK/User/Core/UserLeaderboards  \
-	RSDKv5/RSDK/User/Core/UserPresence     	\
-	RSDKv5/RSDK/User/Core/UserStats     	\
-	RSDKv5/RSDK/User/Core/UserStorage     	\
+	RSDKv5/RSDK/User/Core/UserLeaderboards  	\
+	RSDKv5/RSDK/User/Core/UserPresence     		\
+	RSDKv5/RSDK/User/Core/UserStats     		\
+	RSDKv5/RSDK/User/Core/UserStorage     		\
 	dependencies/all/tinyxml2/tinyxml2 		\
-	dependencies/all/iniparser/iniparser 	\
-	dependencies/all/iniparser/dictionary   \
-	dependencies/all/miniz/miniz   
+	dependencies/all/iniparser/iniparser 		\
+	dependencies/all/iniparser/dictionary   	\
+	dependencies/all/miniz/miniz   			
 
 ifeq ($(RSDK_ONLY),0)
 GAME_INCLUDES = \

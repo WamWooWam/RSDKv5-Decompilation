@@ -282,7 +282,7 @@ void RSDK::LoadSettingsINI()
     // Consoles load the entire file and buffer it, while PC just io's the file when needed
     bool32 useBuffer = !(platform == PLATFORM_PC || platform == PLATFORM_DEV);
 
-    char pathBuffer[0x100];
+    char pathBuffer[0x200];
     sprintf_s(pathBuffer, sizeof(pathBuffer), "%sSettings.ini", SKU::userFileDir);
 
     dictionary *ini = iniparser_load(pathBuffer);
@@ -480,15 +480,15 @@ void RSDK::LoadSettingsINI()
     }
     else {
         videoSettings.windowed       = true;
-        videoSettings.bordered       = false;
-        videoSettings.exclusiveFS    = true;
+        videoSettings.bordered       = true;
+        videoSettings.exclusiveFS    = false;
         videoSettings.vsync          = true;
         videoSettings.tripleBuffered = false;
-        videoSettings.shaderSupport  = true;
+        videoSettings.shaderSupport  = false;
         videoSettings.pixWidth       = DEFAULT_PIXWIDTH;
         videoSettings.fsWidth        = 0;
-        videoSettings.windowWidth    = videoSettings.pixWidth * 1;
-        videoSettings.windowHeight   = SCREEN_YSIZE * 1;
+        videoSettings.windowWidth    = videoSettings.pixWidth * 2;
+        videoSettings.windowHeight   = SCREEN_YSIZE * 2;
         videoSettings.fsHeight       = 0;
         videoSettings.refreshRate    = 60;
         videoSettings.shaderID       = SHADER_NONE;
@@ -560,7 +560,7 @@ void RSDK::SaveSettingsINI(bool32 writeToFile)
 #endif
 
     if (changedVideoSettings || writeToFile) {
-        char pathBuffer[0x100];
+        char pathBuffer[0x200];
         sprintf_s(pathBuffer, sizeof(pathBuffer), "%sSettings.ini", SKU::userFileDir);
 
         dictionary *ini = iniparser_load(pathBuffer);

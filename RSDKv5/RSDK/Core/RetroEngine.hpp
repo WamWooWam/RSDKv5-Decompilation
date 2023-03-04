@@ -210,7 +210,7 @@ enum GameRegions {
 
 // Determines if the engine is RSDKv5 rev01 (all versions of mania pre-plus), rev02 (all versions of mania post-plus) or RSDKv5U (sonic origins)
 #ifndef RETRO_REVISION
-#define RETRO_REVISION (3)
+#define RETRO_REVISION (2)
 #endif
 
 // RSDKv5 Rev02 (Used prior to Sonic Mania Plus)
@@ -230,7 +230,7 @@ enum GameRegions {
 
 // enables the use of the mod loader
 #ifndef RETRO_USE_MOD_LOADER
-#define RETRO_USE_MOD_LOADER (!RETRO_USE_ORIGINAL_CODE && 1)
+#define RETRO_USE_MOD_LOADER (0)
 #endif
 
 // defines the version of the mod loader, this should be changed ONLY if the ModFunctionTable is updated in any way
@@ -414,10 +414,10 @@ enum GameRegions {
 
 #if RETRO_PLATFORM == RETRO_OSX
 
-#include "cocoaHelpers.hpp"
+#include <cocoaHelpers.hpp>
 #elif RETRO_PLATFORM == RETRO_iOS
 
-#include "cocoaHelpers.hpp"
+#include <cocoaHelpers.hpp>
 #elif RETRO_PLATFORM == RETRO_LINUX || RETRO_PLATFORM == RETRO_SWITCH
 
 #if RETRO_RENDERDEVICE_GLFW
@@ -450,7 +450,7 @@ enum GameRegions {
 #if RETRO_RENDERDEVICE_SDL2 || RETRO_INPUTDEVICE_SDL2 || RETRO_AUDIODEVICE_SDL2
 #if RETRO_PLATFORM == RETRO_OSX
 // yeah, I dunno how you're meant to do the below with macOS frameworks so leaving this as is for rn :P
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #else
 // This is the way of including SDL that is recommended by the devs themselves:
 // https://wiki.libsdl.org/FAQDevelopment#do_i_include_sdl.h_or_sdlsdl.h
