@@ -90,7 +90,7 @@ if(CMAKE_TOOLCHAIN_FILE MATCHES "retroppc")
 
     set_source_files_properties(dependencies/all/miniz/miniz.c PROPERTIES COMPILE_DEFINITIONS "MINIZ_NO_TIME;MINIZ_NO_ARCHIVE_APIS")
 
-    add_application(SonicMania
+    add_application(RSDKv5
         RSDKv5/main.cpp
         RSDKv5/RSDK/Core/RetroEngine.cpp
         RSDKv5/RSDK/Core/Math.cpp
