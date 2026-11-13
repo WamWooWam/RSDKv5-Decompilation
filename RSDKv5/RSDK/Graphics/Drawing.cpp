@@ -139,6 +139,8 @@ const RenderVertex rsdkVertexBuffer[24] =
 #include "GLFW/GLFWRenderDevice.cpp"
 #elif RETRO_RENDERDEVICE_EGL
 #include "EGL/EGLRenderDevice.cpp"
+#elif RETRO_RENDERDEVICE_MILSKO
+#include "Milsko/MilskoRenderDevice.cpp"
 #endif
 
 RenderDevice::WindowInfo RenderDevice::displayInfo;

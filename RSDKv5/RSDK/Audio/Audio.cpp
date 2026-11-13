@@ -1,3 +1,7 @@
+#define FileInfo ToolboxFileInfo
+#include <Sound.h>
+#undef FileInfo
+
 #include "RSDK/Core/RetroEngine.hpp"
 
 #if RETRO_REV0U
@@ -34,6 +38,8 @@ float linearInterpolationLookup[LINEAR_INTERPOLATION_LOOKUP_LENGTH];
 #include "SDL2/SDL2AudioDevice.cpp"
 #elif RETRO_AUDIODEVICE_OBOE
 #include "Oboe/OboeAudioDevice.cpp"
+#elif RETRO_AUDIODEVICE_CMACOS
+#include "CMacOS/CMacOSAudioDevice.cpp"
 #endif
 
 uint8 AudioDeviceBase::initializedAudioChannels = false;
