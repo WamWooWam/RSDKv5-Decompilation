@@ -91,6 +91,7 @@ enum GameRegions {
 #define RETRO_iOS     (6)
 #define RETRO_ANDROID (7)
 #define RETRO_UWP     (8)
+#define RETRO_MACOS9  (9) // Classic Mac OS (PowerPC, Retro68)
 
 // ============================
 // PLATFORMS (used mostly in legacy but could come in handy here)
@@ -116,6 +117,9 @@ enum GameRegions {
 #define RETRO_DEVICETYPE (RETRO_STANDARD)
 #endif
 
+#elif defined(macintosh) && !defined(__APPLE__)
+#define RETRO_PLATFORM   (RETRO_MACOS9)
+#define RETRO_DEVICETYPE (RETRO_STANDARD)
 #elif defined __APPLE__
 #define RETRO_USING_MOUSE
 #define RETRO_USING_TOUCH
@@ -170,6 +174,7 @@ enum GameRegions {
 #define RETRO_RENDERDEVICE_SDL2 (0)
 #define RETRO_RENDERDEVICE_GLFW (0)
 #define RETRO_RENDERDEVICE_EGL  (0)
+#define RETRO_RENDERDEVICE_MILSKO (0) // milsko window + OpenGL widget (AGL)
 
 // ============================
 // AUDIO DEVICE BACKENDS
@@ -178,6 +183,7 @@ enum GameRegions {
 // CUSTOM
 #define RETRO_AUDIODEVICE_SDL2 (0)
 #define RETRO_AUDIODEVICE_OBOE (0)
+#define RETRO_AUDIODEVICE_CMACOS (0) // Sound Manager
 
 // ============================
 // INPUT DEVICE BACKENDS
@@ -364,6 +370,16 @@ enum GameRegions {
 #error RSDK_USE_OGL must be defined.
 #endif
 
+#elif RETRO_PLATFORM == RETRO_MACOS9
+
+#undef RETRO_RENDERDEVICE_MILSKO
+#define RETRO_RENDERDEVICE_MILSKO (1)
+
+#undef RETRO_AUDIODEVICE_CMACOS
+#define RETRO_AUDIODEVICE_CMACOS (1)
+
+// input: keyboard only (KBInputDevice)
+
 #elif RETRO_PLATFORM == RETRO_OSX || RETRO_PLATFORM == RETRO_iOS
 
 #undef RETRO_RENDERDEVICE_SDL2
@@ -434,6 +450,10 @@ enum GameRegions {
 #include <switch.h>
 #undef PrintConsole
 #endif
+
+#elif RETRO_PLATFORM == RETRO_MACOS9
+
+#include <classicHelpers.hpp>
 
 #elif RETRO_PLATFORM == RETRO_ANDROID
 

@@ -399,8 +399,13 @@ void LinkGameLogic(GameInfo info);
 // ORIGINAL CLASS
 
 // Windows.h already included by master header
+#if RETRO_PLATFORM == RETRO_MACOS9
+// toolbox dynloading sucks to use just use what we already have for MwDynamicOpen
+#include <Mw/Abstract/Dynamic.h>
+#else
 #if !(RETRO_PLATFORM == RETRO_WIN || RETRO_PLATFORM == RETRO_SWITCH)
 #include <dlfcn.h>
+#endif
 #endif
 
 // Only define this if you want to prioritize checking libraries first (Game_x64.dll then Game.dll)
@@ -420,6 +425,9 @@ public:
     typedef void *Handle;
 #if RETRO_PLATFORM == RETRO_OSX
     static constexpr const char *extention = ".dylib";
+#elif RETRO_PLATFORM == RETRO_MACOS9
+    // CFM finds libraries by fragment name (the cfrg resource), not by file name
+    static constexpr const char *extention = "";
 #else
     static constexpr const char *extention = ".so";
 #endif
@@ -434,6 +442,12 @@ public:
         Handle ret;
 #if RETRO_PLATFORM == RETRO_WIN
         ret = (Handle)LoadLibraryA(path.c_str());
+#elif RETRO_PLATFORM == RETRO_MACOS9
+        // only the fragment name matters, CFM searches the application's folder and Extensions
+        size_t sep = path.find_last_of("/:");
+        if (sep != std::string::npos)
+            path = path.substr(sep + 1);
+        ret = (Handle)::MwDynamicOpen(path.c_str());
 #else
 #if RETRO_PLATFORM == RETRO_ANDROID
         // path should only load local libs
@@ -487,6 +501,8 @@ public:
         if (handle)
 #if RETRO_PLATFORM == RETRO_WIN
             FreeLibrary(handle);
+#elif RETRO_PLATFORM == RETRO_MACOS9
+            ::MwDynamicClose(handle);
 #else
             dlclose(handle);
 #endif
@@ -502,6 +518,8 @@ public:
             return NULL;
 #if RETRO_PLATFORM == RETRO_WIN
         return (void *)GetProcAddress(handle, symbol);
+#elif RETRO_PLATFORM == RETRO_MACOS9
+        return ::MwDynamicSymbol(handle, symbol);
 #else
         return (void *)dlsym(handle, symbol);
 #endif
@@ -515,6 +533,8 @@ public:
 #else
 #if RETRO_PLATFORM == RETRO_WIN
         return (char *)GetLastErrorAsString();
+#elif RETRO_PLATFORM == RETRO_MACOS9
+        return (char *)"GetSharedLibrary/FindSymbol failed (is the game logic library next to the application?)";
 #else
         return dlerror();
 #endif

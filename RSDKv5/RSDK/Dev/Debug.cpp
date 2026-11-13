@@ -99,6 +99,8 @@ void RSDK::PrintLog(int32 mode, const char *message, ...)
             jni->env->CallVoidMethod(jni->thiz, writeLog, array, as);            
 #elif RETRO_PLATFORM == RETRO_SWITCH
             printf("%s", outputString);
+#elif RETRO_PLATFORM == RETRO_MACOS9
+            Classic::LogWrite(outputString);
 #endif
         }
 

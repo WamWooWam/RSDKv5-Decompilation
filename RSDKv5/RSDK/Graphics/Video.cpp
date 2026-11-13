@@ -2,7 +2,7 @@
 
 using namespace RSDK;
 
-FileInfo VideoManager::file;
+::FileInfo VideoManager::file;
 
 ogg_sync_state VideoManager::oy;
 ogg_page VideoManager::og;

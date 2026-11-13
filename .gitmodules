@@ -4,3 +4,12 @@
 [submodule "dependencies/all/stb_vorbis"]
 	path = dependencies/all/stb_vorbis
 	url = https://github.com/nothings/stb
+[submodule "dependencies/cmacos/milsko"]
+	path = dependencies/cmacos/milsko
+	url = https://github.com/pyrite-dev/milsko
+[submodule "dependencies/cmacos/libogg"]
+	path = dependencies/cmacos/libogg
+	url = https://github.com/xiph/ogg.git
+[submodule "dependencies/cmacos/libtheora"]
+	path = dependencies/cmacos/libtheora
+	url = https://github.com/xiph/theora.git

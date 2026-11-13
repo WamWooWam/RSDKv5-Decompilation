@@ -11,6 +11,12 @@
 #include "iniparser.h"
 #include "RSDK/Core/RetroEngine.hpp"
 
+#if RETRO_PLATFORM == RETRO_MACOS9
+// see classicHelpers.hpp:13
+#undef fOpen
+#define fOpen(path, mode) Classic::OpenStdFile(path, mode)
+#endif
+
 /*---------------------------- Defines -------------------------------------*/
 #define ASCIILINESZ         (1024)
 #define INI_INVALID_KEY     ((char*)-1)
