@@ -352,8 +352,8 @@ bool RenderDevice::InitOpenGL()
     PrintLog(PRINT_NORMAL, "OpenGL renderer: %s / %s", glRenderer ? glRenderer : "?", glVersion ? glVersion : "?");
 
     bool is12      = glVersion && (glVersion[0] > '1' || (glVersion[0] == '1' && glVersion[2] >= '2'));
-    mwPackedPixels = is12 || (glExtensions && strstr(glExtensions, "GL_APPLE_packed_pixels"));
-    if (!mwPackedPixels)
+    hasPackedPixels = is12 || (glExtensions && strstr(glExtensions, "GL_APPLE_packed_pixels"));
+    if (!hasPackedPixels)
         PrintLog(PRINT_NORMAL, "OpenGL: no packed pixel formats, converting to RGBA8");
 
     memset(mwTextures, 0, sizeof(mwTextures));

@@ -453,7 +453,7 @@ enum GameRegions {
 
 #elif RETRO_PLATFORM == RETRO_MACOS9
 
-#include <classicHelpers.hpp>
+#include <cmacosHelpers.hpp>
 
 #elif RETRO_PLATFORM == RETRO_ANDROID
 
