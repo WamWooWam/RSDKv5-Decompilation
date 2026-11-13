@@ -2,7 +2,6 @@
 #include "Dialogs.r"
 #include "MacTypes.r"
 
-/* 128mb memory needed motherfucker */
 resource 'SIZE' (-1) {
 	reserved,
 	acceptSuspendResumeEvents,
@@ -20,8 +19,12 @@ resource 'SIZE' (-1) {
 	reserved,
 	reserved,
 	reserved,
-	192 * 1024 * 1024,
-	128 * 1024 * 1024
+	/*
+	  to save every rsdk game from needing cmacos code we just ask the OS for 256mb RAM minimum and 384MB preferred.
+		Sonic Mania in particular needs 128MB minimum so it's not like this is far off
+	*/
+	384 * 1024 * 1024,
+	256 * 1024 * 1024
 };
 
 resource 'ALRT' (128, purgeable) {

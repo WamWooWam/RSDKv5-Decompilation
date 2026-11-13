@@ -124,7 +124,7 @@ if(CMAKE_TOOLCHAIN_FILE MATCHES "retroppc")
         dependencies/all/iniparser/dictionary.cpp
         dependencies/all/miniz/miniz.c
         dependencies/cmacos/cmacosHelpers.cpp
-        dependencies/cmacos/SonicMania.r
+        dependencies/cmacos/resource.r
         CREATOR SMan
     )
     set_target_properties(SonicMania PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
