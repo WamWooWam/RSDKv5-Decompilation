@@ -42,7 +42,7 @@ public:
 
     static void SetWindowTitle();
 
-    // milsko widgets (MwWidget)
+    // milsko widgets
     static void *window;
     static void *glWidget;
 

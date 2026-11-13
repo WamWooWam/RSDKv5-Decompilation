@@ -97,6 +97,43 @@ static int32 mwContentWidth  = 0;
 static int32 mwContentHeight = 0;
 static int32 mwHeldKeys[0x20];
 static int32 mwHeldKeyCount = 0;
+// keys pressed since the last frame, and releases held back until the frame has seen the press
+static int32 mwPressedKeys[0x20];
+static int32 mwPressedKeyCount = 0;
+static int32 mwDeferredKeys[0x20];
+static int32 mwDeferredKeyCount = 0;
+
+static int32 MilskoFindKey(const int32 *list, int32 count, int32 vk)
+{
+    for (int32 k = 0; k < count; ++k) {
+        if (list[k] == vk)
+            return k;
+    }
+    return -1;
+}
+
+static void MilskoReleaseKey(int32 vk)
+{
+#if !RETRO_REV02
+    --RSDK::SKU::buttonDownCount;
+    if (vk == 0x1B)
+        RSDK::SKU::specialKeyStates[0] = false;
+    if (vk == 0x0D)
+        RSDK::SKU::specialKeyStates[1] = false;
+#endif
+    if (vk == 0x08)
+        engine.gameSpeed = 1;
+#if RETRO_INPUTDEVICE_KEYBOARD
+    SKU::ClearKeyState(vk);
+#endif
+}
+
+static void MilskoEndFrameKeys()
+{
+    for (int32 k = 0; k < mwDeferredKeyCount; ++k) MilskoReleaseKey(mwDeferredKeys[k]);
+    mwDeferredKeyCount = 0;
+    mwPressedKeyCount  = 0;
+}
 
 // milsko key codes (MwKEY_* and characters) to Windows virtual keys
 static int32 MilskoKeyToVK(int32 key)
@@ -181,20 +218,11 @@ static void MWAPI MilskoOnClose(MwWidget handle, void *user, void *call)
     mwQuit = true;
 }
 
-static void MWAPI MilskoOnFocusIn(MwWidget handle, void *user, void *call)
-{
-    (void)handle;
-    (void)user;
-    (void)call;
-    engine.inFocus = 1;
-}
-
 static void MWAPI MilskoOnFocusOut(MwWidget handle, void *user, void *call)
 {
     (void)handle;
     (void)user;
     (void)call;
-    engine.inFocus = 0;
     RenderDevice::ReleaseKeys();
 }
 
@@ -330,15 +358,15 @@ static void MilskoDrawARGB8888(const uint32 *pixels, int32 pitch, int32 width, i
 bool RenderDevice::InitOpenGL()
 {
 
-    glWidget = MwCreateWidget(MwOpenGLClass, "gl", (MwWidget)window, 0, 0, mwWindowWidth, mwWindowHeight);
+    glWidget = MwCreateWidget(MwOpenGLClass, "gl", window, 0, 0, mwWindowWidth, mwWindowHeight);
     if (!glWidget) {
         PrintLog(PRINT_NORMAL, "ERROR: could not create an OpenGL context (is OpenGL installed?)");
         return false;
     }
 
-    MwOpenGLMakeCurrent((MwWidget)glWidget);
+    MwOpenGLMakeCurrent(glWidget);
 #define MILSKO_GL_LOAD(ret, name, args)                                                                                                              \
-    mw_##name = (PFN_mw_##name)MwOpenGLGetProcAddress((MwWidget)glWidget, #name);                                                                    \
+    mw_##name = (PFN_mw_##name)MwOpenGLGetProcAddress(glWidget, #name);                                                                    \
     if (!mw_##name) {                                                                                                                                \
         PrintLog(PRINT_NORMAL, "ERROR: OpenGL is missing " #name);                                                                                   \
         return false;                                                                                                                                \
@@ -394,18 +422,21 @@ bool RenderDevice::Init()
         return false;
     }
 
-    MwAddUserHandler((MwWidget)window, MwNcloseHandler, MilskoOnClose, NULL);
-    MwAddUserHandler((MwWidget)window, MwNresizeHandler, MilskoOnResize, NULL);
-    MwAddUserHandler((MwWidget)window, MwNkeyHandler, MilskoOnKey, NULL);
-    MwAddUserHandler((MwWidget)window, MwNkeyReleaseHandler, MilskoOnKeyRelease, NULL);
-    MwAddUserHandler((MwWidget)window, MwNfocusInHandler, MilskoOnFocusIn, NULL);
-    MwAddUserHandler((MwWidget)window, MwNfocusOutHandler, MilskoOnFocusOut, NULL);
+    MwAddUserHandler(window, MwNcloseHandler, MilskoOnClose, NULL);
+    MwAddUserHandler(window, MwNresizeHandler, MilskoOnResize, NULL);
+    MwAddUserHandler(window, MwNkeyHandler, MilskoOnKey, NULL);
+    MwAddUserHandler(window, MwNkeyReleaseHandler, MilskoOnKeyRelease, NULL);
+    MwAddUserHandler(window, MwNfocusOutHandler, MilskoOnFocusOut, NULL);
 
     /* TODO: who feels brave enough to learn Quickdraw3D/RAVE */
     if (!InitOpenGL()) {
         Release(false);
         return false;
     }
+
+    MwAddUserHandler(glWidget, MwNkeyHandler, MilskoOnKey, NULL);
+    MwAddUserHandler(glWidget, MwNkeyReleaseHandler, MilskoOnKeyRelease, NULL);
+    MwAddUserHandler(glWidget, MwNfocusOutHandler, MilskoOnFocusOut, NULL);
 
     UpdateViewport();
     if (!videoSettings.windowed)
@@ -414,7 +445,7 @@ bool RenderDevice::Init()
     PrintLog(PRINT_NORMAL, "w: %d h: %d windowed: %d", videoSettings.windowWidth, videoSettings.windowHeight, videoSettings.windowed);
 
     // let the window appear before the first frame
-    while (MwPending((MwWidget)window)) MwStep((MwWidget)window);
+    while (MwPending(window)) MwStep(window);
 
     if (!SetupRendering() || !AudioDevice::Init())
         return false;
@@ -430,6 +461,8 @@ void RenderDevice::CopyFrameBuffer()
 
 void RenderDevice::FlipScreen()
 {
+    MilskoEndFrameKeys();
+
     if (windowRefreshDelay > 0) {
         windowRefreshDelay--;
         if (!windowRefreshDelay)
@@ -439,7 +472,7 @@ void RenderDevice::FlipScreen()
 
     uint64 flipStart = (uint64)MwTimeGetTick();
 
-    MwOpenGLMakeCurrent((MwWidget)glWidget);
+    MwOpenGLMakeCurrent(glWidget);
     mw_glViewport(0, 0, mwWindowWidth, mwWindowHeight);
     mw_glClear(GL_COLOR_BUFFER_BIT);
     mw_glViewport(mwContentX, mwWindowHeight - mwContentY - mwContentHeight, mwContentWidth, mwContentHeight);
@@ -503,7 +536,7 @@ void RenderDevice::FlipScreen()
         mw_glColor4f(1, 1, 1, 1);
     }
 
-    MwOpenGLSwapBuffer((MwWidget)glWidget);
+    MwOpenGLSwapBuffer(glWidget);
 
     // frame rate in the log every 10 seconds, with the time spent presenting frames
     static uint64 fpsStart = 0;
@@ -532,7 +565,7 @@ void RenderDevice::Release(bool32 isRefresh)
         return;
 
     if (glWidget) {
-        MwOpenGLMakeCurrent((MwWidget)glWidget);
+        MwOpenGLMakeCurrent(glWidget);
         for (int32 i = 0; i < MILSKO_TEXTURE_SLOTS; ++i) {
             if (mwTextures[i].id && mw_glDeleteTextures)
                 mw_glDeleteTextures(1, &mwTextures[i].id);
@@ -544,7 +577,7 @@ void RenderDevice::Release(bool32 isRefresh)
         SetFullscreen(false);
 
     if (window)
-        MwDestroyWidget((MwWidget)window);
+        MwDestroyWidget(window);
     window   = NULL;
     glWidget = NULL;
 
@@ -597,7 +630,7 @@ void RenderDevice::UpdateViewport()
     }
 
     if (glWidget)
-        MwVaApply((MwWidget)glWidget, MwNx, 0, MwNy, 0, MwNwidth, mwWindowWidth, MwNheight, mwWindowHeight, NULL);
+        MwVaApply(glWidget, MwNx, 0, MwNy, 0, MwNwidth, mwWindowWidth, MwNheight, mwWindowHeight, NULL);
 }
 
 void RenderDevice::SetFullscreen(bool32 fullscreen)
@@ -606,25 +639,25 @@ void RenderDevice::SetFullscreen(bool32 fullscreen)
         return;
 
     if (fullscreen) {
-        mwWindowedX = MwGetInteger((MwWidget)window, MwNx);
-        mwWindowedY = MwGetInteger((MwWidget)window, MwNy);
+        mwWindowedX = MwGetInteger(window, MwNx);
+        mwWindowedY = MwGetInteger(window, MwNy);
 
         MwRect screen;
-        MwGetScreenSize((MwWidget)window, &screen);
+        MwGetScreenSize(window, &screen);
 
         mwFullscreen = true;
-        MwWindowMakeBorderless((MwWidget)window, 1);
-        MwVaApply((MwWidget)window, MwNx, screen.x, MwNy, screen.y, MwNwidth, screen.width, MwNheight, screen.height, NULL);
+        MwWindowMakeBorderless(window, 1);
+        MwVaApply(window, MwNx, screen.x, MwNy, screen.y, MwNwidth, screen.width, MwNheight, screen.height, NULL);
         mwWindowWidth  = screen.width;
         mwWindowHeight = screen.height;
-        MwHideCursor((MwWidget)window);
+        MwHideCursor(window);
     }
     else {
         mwFullscreen = false;
-        MwWindowMakeBorderless((MwWidget)window, 0);
+        MwWindowMakeBorderless(window, 0);
         mwWindowWidth  = videoSettings.windowWidth;
         mwWindowHeight = videoSettings.windowHeight;
-        MwVaApply((MwWidget)window, MwNx, mwWindowedX, MwNy, mwWindowedY, MwNwidth, mwWindowWidth, MwNheight, mwWindowHeight, NULL);
+        MwVaApply(window, MwNx, mwWindowedX, MwNy, mwWindowedY, MwNwidth, mwWindowWidth, MwNheight, mwWindowHeight, NULL);
     }
 
     UpdateViewport();
@@ -643,7 +676,7 @@ void RenderDevice::RefreshWindow()
         if (window && (videoSettings.windowWidth != mwWindowWidth || videoSettings.windowHeight != mwWindowHeight)) {
             mwWindowWidth  = videoSettings.windowWidth;
             mwWindowHeight = videoSettings.windowHeight;
-            MwVaApply((MwWidget)window, MwNwidth, mwWindowWidth, MwNheight, mwWindowHeight, NULL);
+            MwVaApply(window, MwNwidth, mwWindowWidth, MwNheight, mwWindowHeight, NULL);
             UpdateViewport();
         }
     }
@@ -777,7 +810,7 @@ void RenderDevice::GetDisplays()
         displayInfo.displays = (decltype(displayInfo.displays))malloc(sizeof(*displayInfo.displays));
 
     MwRect screen;
-    MwGetScreenSize((MwWidget)window, &screen);
+    MwGetScreenSize(window, &screen);
     displayInfo.displays[0].width        = screen.width;
     displayInfo.displays[0].height       = screen.height;
     displayInfo.displays[0].refresh_rate = 60;
@@ -790,11 +823,11 @@ void RenderDevice::GetDisplays()
 void RenderDevice::ShowCursor(bool32 shown)
 {
     if (!shown)
-        MwHideCursor((MwWidget)window);
+        MwHideCursor(window);
     else
         /* milsko doesn't have a function named MwShowCursor (oops! I should add that!)
          * but MwSetDefault does the same thing as of writing */
-        MwSetDefault((MwWidget)window);
+        MwSetDefault(window);
 }
 
 bool RenderDevice::GetCursorPos(Vector2 *pos)
@@ -802,7 +835,7 @@ bool RenderDevice::GetCursorPos(Vector2 *pos)
     if (!window)
         return false;
     MwPoint p;
-    MwGetCursorCoord((MwWidget)window, &p);
+    MwGetCursorCoord(window, &p);
     pos->x = p.x;
     pos->y = p.y;
     return true;
@@ -810,7 +843,7 @@ bool RenderDevice::GetCursorPos(Vector2 *pos)
 
 void RenderDevice::SetWindowTitle()
 {
-    MwVaApply((MwWidget)window, MwNtitle, gameVerInfo.gameTitle, NULL);
+    MwVaApply(window, MwNtitle, gameVerInfo.gameTitle, NULL);
 }
 
 bool RenderDevice::ProcessEvents()
@@ -818,8 +851,8 @@ bool RenderDevice::ProcessEvents()
     if (!window)
         return false;
 
-    while (MwPending((MwWidget)window)) {
-        if (MwStep((MwWidget)window) != 0) {
+    while (MwPending(window)) {
+        if (MwStep(window) != 0) {
             // the window was destroyed
             window   = NULL;
             glWidget = NULL;
@@ -840,8 +873,15 @@ void RenderDevice::ReleaseKeys()
         SKU::ClearKeyState(mwHeldKeys[k]);
 #endif
     }
-    mwHeldKeyCount = 0;
-    mwAltDown      = false;
+    for (int32 k = 0; k < mwDeferredKeyCount; ++k) {
+#if RETRO_INPUTDEVICE_KEYBOARD
+        SKU::ClearKeyState(mwDeferredKeys[k]);
+#endif
+    }
+    mwHeldKeyCount     = 0;
+    mwPressedKeyCount  = 0;
+    mwDeferredKeyCount = 0;
+    mwAltDown          = false;
 }
 
 void RenderDevice::OnKey(int32 key, bool32 down)
@@ -854,28 +894,21 @@ void RenderDevice::OnKey(int32 key, bool32 down)
         mwAltDown = down;
 
     // keep track of held keys, so they can all be let go when the window loses focus
-    int32 held = -1;
-    for (int32 k = 0; k < mwHeldKeyCount; ++k) {
-        if (mwHeldKeys[k] == vk)
-            held = k;
-    }
+    int32 held = MilskoFindKey(mwHeldKeys, mwHeldKeyCount, vk);
 
     if (!down) {
         if (held < 0)
             return;
         mwHeldKeys[held] = mwHeldKeys[--mwHeldKeyCount];
-#if !RETRO_REV02
-        --RSDK::SKU::buttonDownCount;
-        if (vk == 0x1B)
-            RSDK::SKU::specialKeyStates[0] = false;
-        if (vk == 0x0D)
-            RSDK::SKU::specialKeyStates[1] = false;
-#endif
-        if (vk == 0x08)
-            engine.gameSpeed = 1;
-#if RETRO_INPUTDEVICE_KEYBOARD
-        SKU::ClearKeyState(vk);
-#endif
+
+        if (MilskoFindKey(mwPressedKeys, mwPressedKeyCount, vk) >= 0) {
+            if (MilskoFindKey(mwDeferredKeys, mwDeferredKeyCount, vk) < 0
+                && mwDeferredKeyCount < (int32)(sizeof(mwDeferredKeys) / sizeof(mwDeferredKeys[0])))
+                mwDeferredKeys[mwDeferredKeyCount++] = vk;
+            return;
+        }
+
+        MilskoReleaseKey(vk);
         return;
     }
 
@@ -884,6 +917,15 @@ void RenderDevice::OnKey(int32 key, bool32 down)
         return;
     if (mwHeldKeyCount < (int32)(sizeof(mwHeldKeys) / sizeof(mwHeldKeys[0])))
         mwHeldKeys[mwHeldKeyCount++] = vk;
+
+    int32 deferred = MilskoFindKey(mwDeferredKeys, mwDeferredKeyCount, vk);
+    if (deferred >= 0) {
+        mwDeferredKeys[deferred] = mwDeferredKeys[--mwDeferredKeyCount];
+        return;
+    }
+
+    if (MilskoFindKey(mwPressedKeys, mwPressedKeyCount, vk) < 0 && mwPressedKeyCount < (int32)(sizeof(mwPressedKeys) / sizeof(mwPressedKeys[0])))
+        mwPressedKeys[mwPressedKeyCount++] = vk;
 
 #if !RETRO_REV02
     ++RSDK::SKU::buttonDownCount;

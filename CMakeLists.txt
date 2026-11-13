@@ -127,17 +127,17 @@ if(CMAKE_TOOLCHAIN_FILE MATCHES "retroppc")
         dependencies/cmacos/resource.r
         CREATOR SMan
     )
-    set_target_properties(SonicMania PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
-    target_include_directories(SonicMania PRIVATE
+    set_target_properties(RSDKv5 PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+    target_include_directories(RSDKv5 PRIVATE
         RSDKv5/
         dependencies/all/
         dependencies/all/tinyxml2/
         dependencies/all/iniparser/
         dependencies/cmacos/
     )
-    target_compile_definitions(SonicMania PRIVATE ${DEFINES})
-    target_compile_options(SonicMania PRIVATE -fsigned-char -O2 -w $<$<COMPILE_LANGUAGE:CXX>:-fpermissive -Wno-narrowing>)
-    target_link_libraries(SonicMania PRIVATE Mw theoradec ogg InterfaceLib m)
+    target_compile_definitions(RSDKv5 PRIVATE ${DEFINES})
+    target_compile_options(RSDKv5 PRIVATE -fsigned-char -O2 -w $<$<COMPILE_LANGUAGE:CXX>:-fpermissive -Wno-narrowing>)
+    target_link_libraries(RSDKv5 PRIVATE Mw theoradec ogg InterfaceLib m)
 
     return()
 else()
